@@ -1,54 +1,166 @@
 ﻿@page "/"
+@inject IJSRuntime JSRuntime
 @using MudBlazor
 
-<MudContainer MaxWidth="MaxWidth.Large">
-    <!-- Hero -->
-    <MudPaper Class="pa-6 text-center" Style="background-image:url('images/title.jpg'); background-size:cover; color:white;">
-        <MudText Typo="Typo.h2">Benvenuti al nostro Salone</MudText>
-        <MudText Typo="Typo.subtitle1">Scopri le auto più esclusive</MudText>
-        <MudButton Variant="Variant.Filled" Color="Color.Primary">Scopri</MudButton>
-    </MudPaper>
+<style>
+    /* Stili personalizzati per la sezione Hero */
+    .hero-section {
+        height: 80vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=2069&auto=format&fit=crop') no-repeat center center;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+    }
+</style>
 
-    <!-- Carousel -->
-    <MudCarousel Class="mud-width-full" Style="height:700px;" ShowArrows="true" ShowBullets="true" EnableSwipeGesture="true" AutoCycle="true" TData="object">
-        <MudCarouselItem>
-            <img src="images/car1.jpg" alt="Auto 1" style="width:100%; height:100%; object-fit:cover;" />
-        </MudCarouselItem>
-        <MudCarouselItem>
-            <img src="images/car2.jpg" alt="Auto 2" style="width:100%; height:100%; object-fit:cover;" />
-        </MudCarouselItem>
-        <MudCarouselItem>
-            <img src="images/car3.jpg" alt="Auto 3" style="width:100%; height:100%; object-fit:cover;" />
-        </MudCarouselItem>
-    </MudCarousel>
+<!-- HERO SECTION -->
+<div class="hero-section" data-aos="zoom-out">
+    <MudContainer MaxWidth="MaxWidth.Medium">
+        <MudText Typo="Typo.h2" Class="mb-4" Style="font-weight: 700; text-transform: uppercase;">
+            Eccellenza su Quattro Ruote
+        </MudText>
+        <MudText Typo="Typo.h5" Class="mb-6" Style="font-weight: 300;">
+            Scopri la nostra collezione esclusiva di auto sportive, di lusso e d'epoca. Il tuo viaggio verso il prestigio inizia qui.
+        </MudText>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" Class="rounded-pill px-8 py-3">
+            Scopri il Parco Auto
+        </MudButton>
+    </MudContainer>
+</div>
 
-    <!-- Info cards -->
-    <MudGrid Class="my-6" Spacing="3">
-        <MudItem xs="12" sm="4">
-            <div data-aos="fade-up">
-                <MudCard>
-                    <MudCardContent>
-                        <MudText Typo="Typo.h6">Marchi Premium</MudText>
-                        <MudText>Auto dei migliori marchi italiani e internazionali.</MudText>
-                    </MudCardContent>
-                </MudCard>
+<!-- CHI SIAMO -->
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-16 mb-16">
+    <MudGrid>
+        <MudItem xs="12" md="6" Class="d-flex align-center" data-aos="fade-right">
+            <div>
+                <MudText Typo="Typo.h3" Color="Color.Primary" Class="mb-4" Style="font-weight: bold;">
+                    Passione e Dedizione
+                </MudText>
+                <MudText Typo="Typo.body1" Class="mb-4">
+                    Dal 1998 selezioniamo solo i migliori veicoli per i nostri clienti. Ogni auto nel nostro showroom ha una storia da raccontare e prestazioni da brivido da offrire.
+                </MudText>
+                <MudText Typo="Typo.body1">
+                    Offriamo consulenza personalizzata, finanziamenti su misura e un servizio di post-vendita che ti farà sentire sempre in pole position.
+                </MudText>
             </div>
         </MudItem>
-        <MudItem xs="12" sm="4">
-            <MudCard>
+        <MudItem xs="12" md="6" data-aos="fade-left">
+        <MudCarousel Class="responsive-carousel" ShowArrows="true" EnableSwipeGesture="true" AutoCycle="true" TData="object">
+            <MudCarouselItem>
+                <MudImage Src="images/showroom.avif"
+                        Alt="Showroom interno" 
+                        Elevation="4" 
+                        Class="rounded-lg w-100 h-100" 
+                        ObjectFit="ObjectFit.Cover" />
+            </MudCarouselItem>
+            
+            <MudCarouselItem>
+                <MudImage Src="images/car2.jpg"
+                        Alt="Auto 2" 
+                        Elevation="4" 
+                        Class="rounded-lg w-100 h-100" 
+                        ObjectFit="ObjectFit.Cover" />
+            </MudCarouselItem>
+            
+            <MudCarouselItem>
+                <MudImage Src="images/car3.jpg"
+                        Alt="Auto 3" 
+                        Elevation="4" 
+                        Class="rounded-lg w-100 h-100" 
+                        ObjectFit="ObjectFit.Cover" />
+            </MudCarouselItem>
+        </MudCarousel>
+</MudItem>
+    </MudGrid>
+</MudContainer>
+
+<!-- VETRINA AUTO (CARDS) -->
+<MudContainer MaxWidth="MaxWidth.Large" Class="mb-16">
+    <MudText Typo="Typo.h3" Align="Align.Center" Class="mb-10" Style="font-weight: bold;" data-aos="fade-up">
+        I Nostri Ultimi Arrivi
+    </MudText>
+
+    <MudGrid>
+        <!-- Auto 1 -->
+        <MudItem xs="12" sm="6" md="4" data-aos="fade-up" data-aos-delay="100">
+            <MudCard Elevation="3" Class="rounded-lg hover-effect">
+                <MudCardMedia Image="https://images.pexels.com/photos/3752194/pexels-photo-3752194.jpeg?auto=compress&cs=tinysrgb&w=1200" Height="250" />
                 <MudCardContent>
-                    <MudText Typo="Typo.h6">Promozioni</MudText>
-                    <MudText>Scopri le nostre offerte speciali.</MudText>
+                    <MudText Typo="Typo.h5">Porsche 911 Carrera S</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Secondary" Class="mt-1">Anno: 2022 | Km: 15.000</MudText>
+                    <MudText Typo="Typo.h6" Color="Color.Primary" Class="mt-3">€ 145.000</MudText>
                 </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true">Vedi Dettagli</MudButton>
+                </MudCardActions>
             </MudCard>
         </MudItem>
-        <MudItem xs="12" sm="4">
-            <MudCard>
+
+        <!-- Auto 2 -->
+        <MudItem xs="12" sm="6" md="4" data-aos="fade-up" data-aos-delay="200">
+            <MudCard Elevation="3" Class="rounded-lg hover-effect">
+                <MudCardMedia Image="https://images.unsplash.com/photo-1614200187524-dc4b892acf16?q=80&w=2000&auto=format&fit=crop" Height="250" />
                 <MudCardContent>
-                    <MudText Typo="Typo.h6">Assistenza</MudText>
-                    <MudText>Supporto dedicato e consulenza per ogni auto.</MudText>
+                    <MudText Typo="Typo.h5">Audi RS6 Avant</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Secondary" Class="mt-1">Anno: 2023 | Km: 5.000</MudText>
+                    <MudText Typo="Typo.h6" Color="Color.Primary" Class="mt-3">€ 138.500</MudText>
                 </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true">Vedi Dettagli</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+
+        <!-- Auto 3 -->
+        <MudItem xs="12" sm="6" md="4" data-aos="fade-up" data-aos-delay="300">
+            <MudCard Elevation="3" Class="rounded-lg hover-effect">
+                <MudCardMedia Image="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=1964&auto=format&fit=crop" Height="250" />
+                <MudCardContent>
+                    <MudText Typo="Typo.h5">BMW M4 Competition</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Secondary" Class="mt-1">Anno: 2021 | Km: 28.000</MudText>
+                    <MudText Typo="Typo.h6" Color="Color.Primary" Class="mt-3">€ 89.000</MudText>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true">Vedi Dettagli</MudButton>
+                </MudCardActions>
             </MudCard>
         </MudItem>
     </MudGrid>
 </MudContainer>
+
+<!-- SERVIZI -->
+<div style="background-color: var(--mud-palette-background-grey); padding: 60px 0;">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <MudGrid>
+            <MudItem xs="12" md="4" Class="text-center" data-aos="zoom-in" data-aos-delay="100">
+                <MudIcon Icon="@Icons.Material.Filled.DirectionsCar" Color="Color.Primary" Size="Size.Large" Style="font-size: 4rem;" />
+                <MudText Typo="Typo.h6" Class="mt-4 mb-2">Test Drive a Domicilio</MudText>
+                <MudText Typo="Typo.body2">Proviamo le auto insieme. Portiamo l'auto che desideri direttamente a casa tua per una prova senza impegno.</MudText>
+            </MudItem>
+            <MudItem xs="12" md="4" Class="text-center" data-aos="zoom-in" data-aos-delay="200">
+                <MudIcon Icon="@Icons.Material.Filled.Handshake" Color="Color.Primary" Size="Size.Large" Style="font-size: 4rem;" />
+                <MudText Typo="Typo.h6" Class="mt-4 mb-2">Finanziamenti Rapidi</MudText>
+                <MudText Typo="Typo.body2">Collaboriamo con le migliori finanziarie per offrirti tassi agevolati e approvazioni in 24 ore.</MudText>
+            </MudItem>
+            <MudItem xs="12" md="4" Class="text-center" data-aos="zoom-in" data-aos-delay="300">
+                <MudIcon Icon="@Icons.Material.Filled.Build" Color="Color.Primary" Size="Size.Large" Style="font-size: 4rem;" />
+                <MudText Typo="Typo.h6" Class="mt-4 mb-2">Officina Autorizzata</MudText>
+                <MudText Typo="Typo.body2">Non ti lasciamo solo dopo l'acquisto. La nostra officina è pronta a prendersi cura del tuo veicolo.</MudText>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+</div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Inizializza le animazioni allo scroll quando la pagina viene caricata
+            await JSRuntime.InvokeVoidAsync("initAOS");
+        }
+    }
+}

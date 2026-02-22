@@ -113,3 +113,19 @@ code {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
 }
+
+.responsive-carousel {
+    height: 250px; 
+}
+
+@media (min-width: 600px) {
+    .responsive-carousel {
+        height: 400px; 
+    }
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
