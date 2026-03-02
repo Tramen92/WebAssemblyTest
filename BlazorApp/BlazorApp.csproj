@@ -13,10 +13,4 @@
     <PackageReference Include="MudBlazor" Version="9.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="wwwroot\images\car1.jpg">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>
