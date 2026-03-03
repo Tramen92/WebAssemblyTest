@@ -1,6 +1,8 @@
 ﻿@page "/"
 @inject IJSRuntime JSRuntime
+@inject HttpClient HttpClient
 @using MudBlazor
+@using System.Text.Json
 
 <style>
     /* Stili personalizzati per la sezione Hero */
@@ -142,6 +144,13 @@
 </div>
 
 @code {
+    protected override async Task OnInitializedAsync()
+    {
+        // convert response data to JsonElement which can handle any JSON data
+        var data = await HttpClient.GetFromJsonAsync<object>("https://showroom.luca-nicoli-mail.workers.dev/");
+    }
+
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
