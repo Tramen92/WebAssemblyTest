@@ -20,7 +20,7 @@ export default function CarCard({ car }: { car: car }) {
         <Typography variant="h6">
           {car.brand} {car.model}
         </Typography>
-        <Typography variant="body2" color="text.secondary">{`Anno: ${car.year} | Km: ${car.km}`}</Typography>
+        <Typography variant="body2" color="text.secondary">{`Anno: ${car.year} | Km: ${car.kilometers}`}</Typography>
         <Typography variant="h6" color="primary" sx={{ mt: 1 }}>{`€ ${car.price.toLocaleString()}`}</Typography>
       </CardContent>
     </Card>
