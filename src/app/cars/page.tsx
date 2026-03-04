@@ -1,12 +1,12 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { car } from '@/types/car'
+import { Car } from '@/types/Car'
 import CarCard from '@/components/CarCard'
 import { getCars } from '@/lib/firestore'
 
 export default function CarsPage() {
-  const [cars, setCars] = useState<car[]>([])
+  const [cars, setCars] = useState<Car[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

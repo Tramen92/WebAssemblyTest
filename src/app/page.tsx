@@ -5,7 +5,7 @@ import { Box, Container, Grid, Typography, Icon } from '@mui/material'
 import HeroCarousel from '@/components/HeroCarousel'
 import CarCard from '@/components/CarCard'
 import { getCars } from '@/lib/firestore'
-import { car } from '@/types/car'
+import { Car } from '@/types/Car'
 import { useAOS } from '@/hooks/useAOS'
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar'
 import HandshakeIcon from '@mui/icons-material/Handshake'
@@ -14,7 +14,7 @@ import BuildIcon from '@mui/icons-material/Build'
 export default function HomePage() {
   useAOS() // inizializza AOS
 
-  const [cars, setCars] = useState<car[]>([])
+  const [cars, setCars] = useState<Car[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

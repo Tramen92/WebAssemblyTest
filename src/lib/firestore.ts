@@ -1,8 +1,8 @@
-import { car } from "@/types/car";
+import { Car } from "@/types/Car";
 
 const PROJECT_ID = "showroom-88966";
 
-export async function getCars(): Promise<car[]> {
+export async function getCars(): Promise<Car[]> {
   const res = await fetch(
     `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/cars`,
     { next: { revalidate: 60 } } // ISR automatico
